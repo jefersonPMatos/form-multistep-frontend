@@ -19,12 +19,13 @@ import { UpdateSchema } from "../../validations/UpdateSchema";
 
 import { Button } from "../../components/Button";
 import { Card } from "../../components/Card";
+import { Avatar } from "../../components/Avatar";
 
 export default function Dashboard() {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [editing, setEditing] = useState(false);
-  console.log(editing);
+  console.log(user);
 
   const { register, handleSubmit } = useForm({
     resolver: yupResolver(UpdateSchema),
@@ -67,6 +68,7 @@ export default function Dashboard() {
           <>
             <Greeting>
               <h2>Bem vindo, {user.fullname}!</h2>
+              <Avatar sz="100px" src={user.avatar} alt="" />
               <p> {user.email}</p>
             </Greeting>
             <Form onSubmit={handleSubmit(handleUpdateInfo)}>
@@ -99,6 +101,7 @@ export default function Dashboard() {
           <>
             <Greeting>
               <h2>Bem vindo, {user.fullname}!</h2>
+              <Avatar sz="100px" src={user.avatar} alt="" />
             </Greeting>
             <Info>
               <span>
